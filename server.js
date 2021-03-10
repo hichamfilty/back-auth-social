@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const session  = require('express-session')
 const MongoStore = require('connect-mongo').default
 const passport = require('passport')
+const { Cookie } = require('express-session')
 
 require('dotenv').config()
 require('./passport')(passport)
@@ -34,9 +35,14 @@ const mongoStore = MongoStore.create({
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: mongoStore
+  resave: true,
+  saveUninitialized: true,
+  store: mongoStore,
+  cookie: {
+    sameSite: "none",
+    secure: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
+  }
 }))
 
 app.use(passport.initialize())
