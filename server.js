@@ -23,10 +23,10 @@ app.use(express())
 app.use(morgan('dev'))
 // app.use(cookieParser())
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://socialauthredo.herokuapp.com',
   credentials: true
 }))
-// app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 const mongoStore = MongoStore.create({
   mongoUrl: uri,
   collectionName: 'sessions'
