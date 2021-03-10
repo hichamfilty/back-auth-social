@@ -24,7 +24,7 @@ app.use(express())
 app.use(morgan('dev'))
 // app.use(cookieParser())
 app.use(cors({
-  origin: 'https://socialauthredo.herokuapp.com',
+  origin: 'http://localhost:3000',
   credentials: true
 }))
 app.set('trust proxy', 1)
