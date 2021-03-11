@@ -24,7 +24,7 @@ app.use(express())
 app.use(morgan('dev'))
 // app.use(cookieParser())
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://lucid-meninsky-d3d666.netlify.app',
   credentials: true
 }))
 app.set('trust proxy', 1)
